@@ -1,1 +1,5 @@
+# build folder
 out
+
+# on mac os (Finder metadata)
+.DS_Store

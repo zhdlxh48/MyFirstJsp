@@ -9,7 +9,7 @@ public class DatabaseUtil {
             String dbURL = "jdbc:mysql://localhost:3306/TUTORIAL";
             String dbID = "root", dbPassword = "RealTjshd*499";
             // TODO: Class.forName의 사용법 알아보기
-            // TODO: This class is deprecated. Use 'com.mysql.cj.jdbc.Driver' class.
+            // INFO: com.mysql.jdbc.Driver 에서 com.mysql.cj.jdbc.Driver로 클래스 변경됨
             Class.forName("com.mysql.cj.jdbc.Driver");
             return DriverManager.getConnection(dbURL, dbID, dbPassword);
         } catch (Exception e) {

@@ -1,2 +1,8 @@
+# build folder
+out
+
+# IDEA IDE Settings
+.idea
+
 # on mac os (Finder metadata)
 .DS_Store

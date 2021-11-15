@@ -6,6 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
+<%@ page import="java.io.PrintWriter" %>
+<%@ page import="user.UserDAO" %>
+
 <!DOCTYPE html>
 <html>
   <link>
@@ -19,6 +22,31 @@
     <link rel="stylesheet" href="./css/custom.css">
   </head>
   <body>
+  <%
+    String userID = null;
+    if (session.getAttribute("userID") != null) {
+      userID = (String) session.getAttribute("userID");
+    }
+    if (userID == null) {
+      PrintWriter script = response.getWriter();
+      script.println("<script>");
+      script.println("alert(\"로그인이 필요합니다.\")");
+      script.println("location.href = 'userLogin.jsp'");
+      script.println("</script>");
+      script.close();
+      return;
+    }
+    boolean emailChecked = new UserDAO().getUserEmailChecked(userID);
+    if (!emailChecked) {
+      PrintWriter script = response.getWriter();
+      script.println("<script>");
+      script.println("alert(\"이메일 인증이 완료되지 않았습니다. 인증을 완료해주세요.\")");
+      script.println("location.href = 'emailSendConfirm.jsp'");
+      script.println("</script>");
+      script.close();
+      return;
+    }
+  %>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="index.jsp">강의평가 웹 사이트</a>
@@ -35,9 +63,12 @@
                 회원관리
               </a>
               <div id="navbar-dropdown" class="dropdown-menu" aria-labelledby="dropdown">
+<% if (userID == null) { %>
                 <a class="dropdown-item" href="userLogin.jsp">로그인</a>
                 <a class="dropdown-item" href="userJoin.jsp">회원가입</a>
-                <a class="dropdown-item" href="userLogout.jsp">로그아웃</a>
+<% } else { %>
+                <a class="dropdown-item" href="userLogoutAction.jsp">로그아웃</a>
+<% } %>
               </div>
             </li>
           </ul>

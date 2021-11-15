@@ -6,6 +6,24 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
+<%@ page import="user.UserDAO" %>
+<%@ page import="java.io.PrintWriter" %>
+<%
+  String userID = null;
+  if (session.getAttribute("userID") != null) {
+    userID = (String) session.getAttribute("userID");
+  }
+    if (userID != null) {
+      PrintWriter script = response.getWriter();
+      script.println("<script>");
+//      script.println("alert(\"로그인이 되어있습니다.\")");
+      script.println("location.href = 'index.jsp'");
+      script.println("</script>");
+      script.close();
+      return;
+    }
+%>
+
 <!DOCTYPE html>
 <html>
   <link>
@@ -27,7 +45,7 @@
         </button>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="navbar-nav me-auto">
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link" href="index.jsp">메인</a>
             </li>
             <li class="nav-item dropdown">
@@ -35,9 +53,12 @@
                 회원관리
               </a>
               <div id="navbar-dropdown" class="dropdown-menu" aria-labelledby="dropdown">
+                <% if (userID == null) { %>
                 <a class="dropdown-item" href="userLogin.jsp">로그인</a>
-                <a class="dropdown-item active" href="userJoin.jsp">회원가입</a>
-                <a class="dropdown-item" href="userLogout.jsp">로그아웃</a>
+                <a class="dropdown-item" href="userJoin.jsp">회원가입</a>
+                <% } else { %>
+                <a class="dropdown-item" href="userLogoutAction.jsp">로그아웃</a>
+                <% } %>
               </div>
             </li>
           </ul>

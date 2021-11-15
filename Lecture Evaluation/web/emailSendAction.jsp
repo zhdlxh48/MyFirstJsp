@@ -113,9 +113,12 @@
                         회원관리
                     </a>
                     <div id="navbar-dropdown" class="dropdown-menu" aria-labelledby="dropdown">
+                        <% if (userID == null) { %>
                         <a class="dropdown-item" href="userLogin.jsp">로그인</a>
                         <a class="dropdown-item" href="userJoin.jsp">회원가입</a>
-                        <a class="dropdown-item" href="userLogout.jsp">로그아웃</a>
+                        <% } else { %>
+                        <a class="dropdown-item" href="userLogoutAction.jsp">로그아웃</a>
+                        <% } %>
                     </div>
                 </li>
             </ul>

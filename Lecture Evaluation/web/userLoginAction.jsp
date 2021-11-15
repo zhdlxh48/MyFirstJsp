@@ -16,20 +16,6 @@
     request.setCharacterEncoding("UTF-8");
     String userID = null;
     String userPassword = null;
-    String userEmail = null;
-
-    if (session.getAttribute("userID") != null) {
-        userID = (String) session.getAttribute("userID");
-    }
-    if (userID != null) {
-        PrintWriter script = response.getWriter();
-        script.println("<script>");
-        script.println("alert(\"현재 로그인이 되어있는 상태입니다.\")");
-        script.println("location.href = 'index.jsp'");
-        script.println("</script>");
-        script.close();
-        return;
-    }
 
     if (request.getParameter("userID") != null) {
         userID = request.getParameter("userID");
@@ -39,12 +25,8 @@
         userPassword = request.getParameter("userPassword");
         System.out.println("User ID: " + userPassword);
     }
-    if (request.getParameter("userEmail") != null) {
-        userEmail = request.getParameter("userEmail");
-        System.out.println("User ID: " + userEmail);
-    }
 
-    if (userID == "" || userPassword == "" || userEmail == "") {
+    if (userID == "" || userPassword == "") {
         PrintWriter script = response.getWriter();
         script.println("<script>");
         script.println("alert(\"잘못된 입력입니다. 다시한번 확인해주세요.\");");
@@ -55,20 +37,27 @@
     }
 
     UserDAO userDAO = new UserDAO();
-    int result = userDAO.join(new UserDTO(userID, userPassword, userEmail, false, SHA256.getSHA256(userEmail)));
-    if (result == -1) {
-        PrintWriter script = response.getWriter();
-        script.println("<script>");
-        script.println("alert(\"이미 존재하는 아이디입니다.\")");
-        script.println("history.back();");
-        script.println("</script>");
-        script.close();
-        return;
-    } else {
+    int result = userDAO.login(userID, userPassword);
+    if (result == 1) {
         session.setAttribute("userID", userID);
         PrintWriter script = response.getWriter();
         script.println("<script>");
-        script.println("location.href = 'emailSendAction.jsp'");
+        script.println("location.href = 'index.jsp'");
+        script.println("</script>");
+        script.close();
+        return;
+    } else if (result == 0 || result == -1) {
+        PrintWriter script = response.getWriter();
+        script.println("<script>");
+        script.println("alert(\"비밀번호 혹은 아이디가 틀렸거나 존재하지 않습니다.\")");
+        script.println("history.back();");
+        script.println("</script>");
+        script.close();
+    } else if (result == -2) {
+        PrintWriter script = response.getWriter();
+        script.println("<script>");
+        script.println("alert(\"내부 데이터베이스 오류가 발생했습니다.\n관리자에게 문의바랍니다.\")");
+        script.println("history.back();");
         script.println("</script>");
         script.close();
     }

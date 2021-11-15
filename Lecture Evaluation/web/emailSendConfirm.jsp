@@ -13,11 +13,10 @@
   if (session.getAttribute("userID") != null) {
     userID = (String) session.getAttribute("userID");
   }
-  if (userID != null) {
+  if (userID == null) {
     PrintWriter script = response.getWriter();
     script.println("<script>");
-//    script.println("alert(\"로그인이 되어있습니다.\")");
-    script.println("location.href = 'index.jsp'");
+    script.println("location.href = 'userLogin.jsp'");
     script.println("</script>");
     script.close();
     return;
@@ -71,19 +70,11 @@
     </nav>
 
     <section class="container" style="max-width: 560px;">
-      <form method="post" action="./userLoginAction.jsp">
-        <div class="col my-4">
-          <div class="row-cols-1 mb-2">
-            <label>아이디</label>
-            <input type="text" name="userID" class="form-control mt-1" />
-          </div>
-          <div class="row-cols-1 my-2">
-            <label>비밀번호</label>
-            <input type="password" name="userPassword" class="form-control mt-1" />
-          </div>
-          <button type="submit" class="btn btn-primary row-cols-1 mt-2">로그인</button>
-        </div>
-      </form>
+      <div class="alert alert-warning mt-4" role="alert">
+        이메일 인증이 필요합니다.
+        이메일 인증 문자를 받지 못하셨나요?
+      </div>
+      <a href="emailSendAction.jsp" class="btn btn-primary">인증메일 재전송</a>
     </section>
 
     <footer class="bg-dark mt-4 p-5 text-center" style="color: white">

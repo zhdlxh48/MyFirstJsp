@@ -64,7 +64,7 @@
             <label>이메일</label>
             <input type="email" name="userEmail" class="form-control mt-1" />
           </div>
-          <button type="submit" class="btn btn-primary row-cols-1 mt-2">로그인</button>
+          <button type="submit" class="btn btn-primary row-cols-1 mt-2">회원가입</button>
         </div>
       </form>
     </section>

@@ -34,9 +34,11 @@
     }
 
     String userEmail = userDAO.getUserEmail(userID);
-    boolean isRight = SHA256.getSHA256(userEmail).equals(code);
+    String sha256 = SHA256.getSHA256(userEmail);
+    boolean isRight = sha256.equals(code);
     if (isRight) {
         userDAO.setUserEmailChecked(userID);
+        System.out.println(String.format("SHA256 is equal with email's code!\n\tSHA256 (Converted): %s\n\tEmail's Code: %s", sha256, code));
         PrintWriter script = response.getWriter();
         script.println("<script>");
         script.println("alert(\"성공적으로 인증되었습니다!\");");
@@ -45,6 +47,7 @@
         script.close();
         return;
     } else {
+        System.out.println(String.format("SHA256 is not equal with email's code..\n\tSHA256 (Converted): %s\n\tEmail's Code: %s", sha256, code));
         PrintWriter script = response.getWriter();
         script.println("<script>");
         script.println("alert(\"유효하지 않은 코드입니다.\");");

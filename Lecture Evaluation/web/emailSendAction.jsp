@@ -42,7 +42,7 @@
     }
 
     String host = "http://localhost:8080/Lecture_Evaluation_war_exploded";
-    String from = "zhdlxh48@gmail.com";
+    String from = System.getenv("DEV_EMAIL");
     String to = userDAO.getUserEmail(userID);
     System.out.println("인증메일 발송: " + to);
     String subject = "강의 평가를 위한 이메일 인증 메일입니다.";

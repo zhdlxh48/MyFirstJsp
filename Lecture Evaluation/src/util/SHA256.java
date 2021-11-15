@@ -9,7 +9,7 @@ public class SHA256 {
 
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] salt = "Hello! This is Salt.".getBytes();
+            byte[] salt = System.getenv("DEV_SALT").getBytes();
             digest.reset();
             digest.update(salt);
             System.out.println("Convert to UTF-8 Bytes: " + input + " -> " + input.getBytes());

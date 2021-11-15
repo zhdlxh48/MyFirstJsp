@@ -22,7 +22,7 @@ public class SHA256 {
                 }
                 result.append(hex);
             }
-            System.out.println("SHA256 Result: " + result.toString());
+            System.out.println("SHA256 Result: " + result);
         } catch (Exception e) {
             e.printStackTrace();
         }

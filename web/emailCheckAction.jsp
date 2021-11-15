@@ -6,9 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
-<%@ page import="java.io.PrintWriter"%>
-<%@ page import="user.UserDAO"%>
-<%@ page import="util.SHA256"%>
+<%@ page import="java.io.PrintWriter" %>
+<%@ page import="user.UserDAO" %>
+<%@ page import="util.SHA256" %>
 
 <%
     request.setCharacterEncoding("UTF-8");

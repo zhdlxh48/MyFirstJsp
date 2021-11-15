@@ -6,12 +6,12 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
-<%@ page import="javax.mail.*"%>
-<%@ page import="util.Gmail"%>
-<%@ page import="user.UserDAO"%>
-<%@ page import="util.SHA256"%>
-<%@ page import="java.util.Properties"%>
-<%@ page import="java.io.PrintWriter"%>
+<%@ page import="javax.mail.*" %>
+<%@ page import="util.Gmail" %>
+<%@ page import="user.UserDAO" %>
+<%@ page import="util.SHA256" %>
+<%@ page import="java.util.Properties" %>
+<%@ page import="java.io.PrintWriter" %>
 <%@ page import="javax.mail.internet.MimeMessage" %>
 <%@ page import="javax.mail.internet.InternetAddress" %>
 <%
@@ -100,7 +100,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.jsp">강의평가 웹 사이트</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+                aria-expanded="false" aria-controls="navbar">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div id="navbar" class="collapse navbar-collapse">
@@ -109,7 +110,8 @@
                     <a class="nav-link" href="index.jsp">메인</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="dropdown" data-bs-toggle="dropdown" data-bs-target="#navbar-dropdown" aria-expanded="false" aria-controls="navbar-dropdown">
+                    <a class="nav-link dropdown-toggle" id="dropdown" data-bs-toggle="dropdown"
+                       data-bs-target="#navbar-dropdown" aria-expanded="false" aria-controls="navbar-dropdown">
                         회원관리
                     </a>
                     <div id="navbar-dropdown" class="dropdown-menu" aria-labelledby="dropdown">
@@ -123,7 +125,7 @@
                 </li>
             </ul>
             <form class="d-inline-flex my-2 my-lg-0">
-                <input class="form-control me-sm-2 w-auto" type="search" placeholder="내용을 입력하세요" aria-label="search" />
+                <input class="form-control me-sm-2 w-auto" type="search" placeholder="내용을 입력하세요" aria-label="search"/>
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
             </form>
         </div>

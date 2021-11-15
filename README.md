@@ -31,12 +31,13 @@ Jsp를 공부하면서 정리하기 위해 만든 리포지토리입니다
 - 2021/11/12 [완료]
 - UserDTO
 - UserDAO
-- Database 연동 Util
+- DatabaseUtil
 
 3. MySQL 데이터베이스 설정
-- 2021/11/13 [완료]
-- TUTORIAL db 생성
+- 2021/11/14 [완료]
 - user 테이블 생성
+- evaluation 테이블 생성
+- likey 테이블 생성
 
 4. Web UI 설정
 - 2021/11/15 [완료]

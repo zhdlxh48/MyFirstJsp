@@ -51,6 +51,11 @@ public class UserDAO {
         Connection conn = null;
         PreparedStatement pstate = null;
 
+        System.out.println(
+                String.format("Trying to register User (ID: %s, PW: %s, Email: %s)",
+                        user.getUserID(), user.getUserPassword(), user.getUserEmail())
+        );
+
         try {
             conn = DatabaseUtil.getConnection();
             pstate = conn.prepareStatement(SQL);

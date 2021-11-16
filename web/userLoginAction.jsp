@@ -23,7 +23,7 @@
     }
     if (request.getParameter("userPassword") != null) {
         userPassword = request.getParameter("userPassword");
-        System.out.println("User ID: " + userPassword);
+        System.out.println("User Password: " + userPassword);
     }
 
     if (userID == "" || userPassword == "") {

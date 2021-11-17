@@ -63,8 +63,8 @@
                     </div>
                 </li>
             </ul>
-            <form class="d-inline-flex my-2 my-lg-0">
-                <input class="form-control me-sm-2 w-auto" type="search" placeholder="내용을 입력하세요" aria-label="search"/>
+            <form action="./index.jsp" method="get" class="d-inline-flex my-2 my-lg-0">
+                <input type="text" name="search" class="form-control me-sm-2 w-auto" type="search" placeholder="내용을 입력하세요" aria-label="search"/>
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
             </form>
         </div>

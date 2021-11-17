@@ -293,8 +293,8 @@
                 <h5 class="modal-title" id="report-modal-title">신고하기</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <form action="./reportAction.jsp" method="post">
             <div class="modal-body">
-                <form action="./reportAction.jsp" method="post">
                     <div>
                         <label>제목</label>
                         <input type="text" name="reportTitle" class="form-control mt-1" maxlength="30"/>
@@ -304,12 +304,12 @@
                         <textarea name="reportContent" class="form-control mt-1" maxlength="2048"
                                   style="height: 180px;"></textarea>
                     </div>
-                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
                 <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">신고</button>
             </div>
+        </form>
         </div>
     </div>
 </div>

@@ -115,4 +115,92 @@ public class EvaluationDAO {
         }
         return evaluationList;
     }
+
+    public int like(String evaluationID) {
+        String SQL = "UPDATE EVALUATION SET likeCount = likeCount + 1 WHERE evaluationID = ?";
+        Connection conn = null;
+        PreparedStatement pstate = null;
+
+        try {
+            conn = DatabaseUtil.getConnection();
+            pstate = conn.prepareStatement(SQL);
+            pstate.setInt(1, Integer.parseInt(evaluationID));
+            return pstate.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally { // Resource Clear
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+                if (pstate != null) {
+                    pstate.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return -1; // Set Error
+    }
+
+    public int delete(String evaluationID) {
+        String SQL = "DELETE FROM EVALUATION WHERE evaluationID = ?";
+        Connection conn = null;
+        PreparedStatement pstate = null;
+
+        try {
+            conn = DatabaseUtil.getConnection();
+            pstate = conn.prepareStatement(SQL);
+            pstate.setInt(1, Integer.parseInt(evaluationID));
+            return pstate.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally { // Resource Clear
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+                if (pstate != null) {
+                    pstate.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return -1; // Set Error
+    }
+
+    public String getUserID(String evaluationID) {
+        String SQL = "SELECT userID FROM EVALUATION WHERE evaluationID = ?";
+        Connection conn = null;
+        PreparedStatement pstate = null;
+        ResultSet rs = null;
+
+        try {
+            conn = DatabaseUtil.getConnection();
+            pstate = conn.prepareStatement(SQL);
+            pstate.setInt(1, Integer.parseInt(evaluationID));
+            rs = pstate.executeQuery();
+            if (rs.next()) {
+                return rs.getString(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally { // Resource Clear
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+                if (pstate != null) {
+                    pstate.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return null; // 존재하지 않는 인기글
+    }
 }

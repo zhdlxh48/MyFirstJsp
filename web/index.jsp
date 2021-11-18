@@ -134,30 +134,30 @@
         if (evaluationList != null) {
             for (int i = 0; i < evaluationList.size(); i++) {
                 if (i == 5) break;
-                EvaluationDTO evaluationDTO = evaluationList.get(i);
+                EvaluationDTO evaluation = evaluationList.get(i);
     %>
     <div class="card bg-light mt-3">
         <div class="card-header bg-light">
             <div class="row">
-                <div class="col-8 text-start"><%= evaluationDTO.getLectureName() %>&nbsp;<small><%= evaluationDTO.getProfessorName() %></small></div>
-                <div class="col-4 text-end">종합&nbsp;<span style="color: red;"><%= evaluationDTO.getTotalScore() %></span></div>
+                <div class="col-8 text-start"><%= evaluation.getLectureName() %>&nbsp;<small><%= evaluation.getProfessorName() %></small></div>
+                <div class="col-4 text-end">종합&nbsp;<span style="color: red;"><%= evaluation.getTotalScore() %></span></div>
             </div>
         </div>
         <div class="card-body">
             <h5 class="card-title">
-                <%= evaluationDTO.getEvaluationTitle() %>&nbsp;<small>(<%= evaluationDTO.getLectureYear() %>년 <%= evaluationDTO.getSemesterDivide() %>)</small>
+                <%= evaluation.getEvaluationTitle() %>&nbsp;<small>(<%= evaluation.getLectureYear() %>년 <%= evaluation.getSemesterDivide() %>)</small>
             </h5>
-            <p class="card-text"><%= evaluationDTO.getEvaluationContent() %></p>
+            <p class="card-text"><%= evaluation.getEvaluationContent() %></p>
             <div class="row">
                 <div class="col-9 text-start">
-                    강의&nbsp;<span style="color: red;"><%= evaluationDTO.getLectureScore() %></span>
-                    여유도&nbsp;<span style="color: red;"><%= evaluationDTO.getComfortableScore() %></span>
-                    성적&nbsp;<span style="color: red;"><%= evaluationDTO.getCreditScore() %></span>
-                    <span style="color: green;">(추천: <%= evaluationDTO.getLikeCount() %>)</span>
+                    강의&nbsp;<span style="color: red;"><%= evaluation.getLectureScore() %></span>
+                    여유도&nbsp;<span style="color: red;"><%= evaluation.getComfortableScore() %></span>
+                    성적&nbsp;<span style="color: red;"><%= evaluation.getCreditScore() %></span>
+                    <span style="color: green;">(추천: <%= evaluation.getLikeCount() %>)</span>
                 </div>
                 <div class="col-3 text-end">
-                    <a onclick="return confirm('추천하시겠습니까?')" href="./likeAction.jsp?evaluationID=">추천</a>
-                    <a onclick="return confirm('삭제하시겠습니까?')" href="./deleteAvtion.jsp?evaluationID=">삭제</a>
+                    <a onclick="return confirm('추천하시겠습니까?')" href="./likeAction.jsp?evaluationID=<%= evaluation.getEvaluationID() %>">추천</a>
+                    <a onclick="return confirm('삭제하시겠습니까?')" href="./deleteAction.jsp?evaluationID=<%= evaluation.getEvaluationID() %>">삭제</a>
                 </div>
             </div>
         </div>

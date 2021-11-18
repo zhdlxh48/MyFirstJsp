@@ -17,18 +17,18 @@ public class EvaluationDAO {
         try {
             conn = DatabaseUtil.getConnection();
             pstate = conn.prepareStatement(SQL);
-            pstate.setString(1, evaluationDTO.getUserID());
-            pstate.setString(2, evaluationDTO.getLectureName());
-            pstate.setString(3, evaluationDTO.getProfessorName());
+            pstate.setString(1, evaluationDTO.getUserID().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replace("\r\n", "<br/>"));
+            pstate.setString(2, evaluationDTO.getLectureName().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replace("\r\n", "<br/>"));
+            pstate.setString(3, evaluationDTO.getProfessorName().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replace("\r\n", "<br/>"));
             pstate.setInt(4, evaluationDTO.getLectureYear());
-            pstate.setString(5, evaluationDTO.getSemesterDivide());
-            pstate.setString(6, evaluationDTO.getLectureDivide());
-            pstate.setString(7, evaluationDTO.getEvaluationTitle());
-            pstate.setString(8, evaluationDTO.getEvaluationContent());
-            pstate.setString(9, evaluationDTO.getTotalScore());
-            pstate.setString(10, evaluationDTO.getCreditScore());
-            pstate.setString(11, evaluationDTO.getComfortableScore());
-            pstate.setString(12, evaluationDTO.getLectureScore());
+            pstate.setString(5, evaluationDTO.getSemesterDivide().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replace("\r\n", "<br/>"));
+            pstate.setString(6, evaluationDTO.getLectureDivide().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replace("\r\n", "<br/>"));
+            pstate.setString(7, evaluationDTO.getEvaluationTitle().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replace("\r\n", "<br/>"));
+            pstate.setString(8, evaluationDTO.getEvaluationContent().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replace("\r\n", "<br/>"));
+            pstate.setString(9, evaluationDTO.getTotalScore().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replace("\r\n", "<br/>"));
+            pstate.setString(10, evaluationDTO.getCreditScore().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replace("\r\n", "<br/>"));
+            pstate.setString(11, evaluationDTO.getComfortableScore().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replace("\r\n", "<br/>"));
+            pstate.setString(12, evaluationDTO.getLectureScore().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replace("\r\n", "<br/>"));
             return pstate.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
